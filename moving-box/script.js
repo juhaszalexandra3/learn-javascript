@@ -14,14 +14,13 @@ function randInt(end) {
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
+// draw initial position
+draw(snake_x, snake_y);
+
 window.addEventListener('keydown',this.check,false);
 
 function check(e) {
-    //alert(e.keyCode);
-    //draw(e);
-    //moveSnake(e.keyCode);
-
-    // draw white
+    // paint white
     ctx.fillStyle = "white";
     ctx.fillRect(snake_x, snake_y, 20, 20);
     // determine snake direction
@@ -34,13 +33,11 @@ function check(e) {
     } else if(e.keyCode == 40) {
         snake_y += snake_step;
     }
-    ctx.fillStyle = `rgb(${randInt(255)}, ${randInt(255)}, ${randInt(255)}, 0.5)`;
-    ctx.fillRect(snake_x, snake_y, box_size, box_size);
+    // move box
+    draw(snake_x, snake_y);
 }
 
-canvas.addEventListener("click", this.draw, false);
-
-function draw(e) {
+function draw(x_pos, y_pos) {
     ctx.fillStyle = `rgb(${randInt(255)}, ${randInt(255)}, ${randInt(255)}, 0.5)`
-    ctx.fillRect(randInt(600), randInt(300), 20, 20);
+    ctx.fillRect(x_pos, y_pos, 20, 20);
 }
